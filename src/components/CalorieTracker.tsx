@@ -34,11 +34,11 @@ export default function CalorieTracker({ activities }: CalorieTrackerProps) {
 
   return (
     <>
-      <h2 className=" text-3xl text-center text-sky-500 font-bold md:text-4xl">
+      <h2 className=" text-3xl text-center text-white font-bold md:text-4xl">
         Resumen
       </h2>
 
-      <div className=" flex flex-col items-center justify-center gap-5 mt-6 md:justify-between md:flex-row xl:flex-col">
+      <div className=" flex flex-col gap-5 md:flex-row md:justify-evenly mt-5">
         <CaloriesDisplay calories={caloriesConsumed} text="Consumidas" />
 
         <CaloriesDisplay calories={caloriesBurned} text="Ejercicio" />

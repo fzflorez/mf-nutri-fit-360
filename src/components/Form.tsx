@@ -66,7 +66,7 @@ export default function Form({ dispatch, state }: FormProps) {
         <select
           id="category"
           value={activity.category}
-          className=" border border-gray-300 py-1 px-2 rounded-lg w-full bg-white md:p-2"
+          className=" border border-gray-300 py-1 px-2 rounded-lg w-full bg-white outline-none md:p-2"
           onChange={handleChange}
         >
           {categories.map((category) => (
@@ -88,7 +88,7 @@ export default function Form({ dispatch, state }: FormProps) {
           type="text"
           id="name"
           value={activity.name}
-          className=" border border-gray-300 py-1 px-2 rounded-lg md:p-2"
+          className=" border border-gray-300 py-1 px-2 rounded-lg outline-none md:p-2"
           placeholder="Ej. Comida, Ejercicio"
           onChange={handleChange}
         />
@@ -105,7 +105,7 @@ export default function Form({ dispatch, state }: FormProps) {
           type="number"
           id="calories"
           value={activity.calories}
-          className=" border border-gray-300 py-1 px-2 rounded-lg md:p-2"
+          className=" border border-gray-300 py-1 px-2 rounded-lg outline-none md:p-2"
           placeholder="Ej. 300, 500"
           onChange={handleChange}
         />
@@ -113,9 +113,9 @@ export default function Form({ dispatch, state }: FormProps) {
 
       <input
         type="submit"
-        className=" bg-sky-500 text-white font-bold w-full py-1 rounded-sm cursor-pointer disabled:opacity-60 md:p-2"
-        value={activity.category === 1 ? "Guardar Comida" : "Guardar Ejercicio"}
+        className=' bg-sky-500 text-white font-bold w-full py-1 rounded-sm cursor-pointer uppercase disabled:opacity-60 md:p-2'
         disabled={!isValidActivity()}
+        value={state.activeId ? "Guardar Cambios" : activity.category === 1 ? "Agregar Comida" : "Agregar Ejercicio"}
       />
     </form>
   );
