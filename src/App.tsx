@@ -24,32 +24,26 @@ function App() {
             Nutrifit 360
           </h1>
           <button
-            className=" text-sm text-black bg-white rounded-lg font-semibold py-1 px-3 transition-all duration-200 ease-in-out disabled:opacity-40 md:text-base"
+            className=" text-base text-black bg-white rounded-lg font-semibold py-1 px-3 transition-all duration-200 ease-in-out disabled:opacity-40 md:text-lg"
             disabled={!canRestartApp}
             onClick={() => dispatch({ type: "restart-app" })}
           >
-            Reiniciar
+            Reiniciar App
           </button>
         </div>
       </header>
 
-      <main className=" flex flex-col gap-4 py-10 px-3">
-        <section className=" flex-1 space-y-8">
-          <div className=" max-w-3xl mx-auto">
-            <div className=" bg-gray-500 py-5 rounded-xl">
-              <Form dispatch={dispatch} state={state} />
-            </div>
-          </div>
-
-          <div className=" max-w-7xl mx-auto">
-            <ActivityList activities={state.activities} dispatch={dispatch} />
-          </div>
+      <main className=" relative space-y-8 py-10 px-3">
+        <section className=" max-w-3xl mx-auto bg-gray-500 py-5 rounded-xl">
+          <Form dispatch={dispatch} state={state} />
         </section>
 
-        <section className=" flex-2 static xl:fixed right-0">
-          <div className=" max-w-4xl mx-auto pt-5 md:px-0 xl:pt-12 xl:px-16">
-            <CalorieTracker activities={state.activities} />
-          </div>
+        <section className=" w-full bg-gray-800 py-6">
+          <CalorieTracker activities={state.activities} />
+        </section>
+
+        <section className=" max-w-7xl mx-auto">
+          <ActivityList activities={state.activities} dispatch={dispatch} />
         </section>
       </main>
     </>
