@@ -14,7 +14,7 @@ export default function Form({ dispatch, state }: FormProps) {
     id: uuidv4(),
     category: 1,
     name: "",
-    calories: 0,
+    calories: "",
   };
 
   const [activity, setActivity] = useState<Activity>(initialState);
@@ -43,7 +43,7 @@ export default function Form({ dispatch, state }: FormProps) {
 
   function isValidActivity() {
     const { name, calories } = activity;
-    return name.trim() !== "" && calories > 0;
+    return name.trim() !== "" && calories > "";
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -104,7 +104,7 @@ export default function Form({ dispatch, state }: FormProps) {
         <input
           type="number"
           id="calories"
-          value={activity.calories}
+          value={Number(activity.calories) === 0 ? "" : activity.calories}
           className=" border border-gray-300 py-1 px-2 rounded-lg outline-none md:p-2"
           placeholder="Ej. 300, 500"
           onChange={handleChange}
