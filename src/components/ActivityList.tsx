@@ -27,7 +27,7 @@ export default function ActivityList({
 
       {activities.length === 0 ? (
         <p className=" text-gray-600 text-lg font-semibold text-center my-5">
-          Aún no hay activiades...
+          Aún no hay actividades...
         </p>
       ) : (
         <div className=" grid grid-cols-1 gap-4 max-w-3xl mx-auto md:gap-6">
