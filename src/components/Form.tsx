@@ -99,7 +99,7 @@ export default function Form({ dispatch, state }: FormProps) {
           htmlFor="calories"
           className=" text-base font-bold md:text-lg text-white"
         >
-          Calorias:
+          Calorías:
         </label>
         <input
           type="number"

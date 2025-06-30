@@ -11,7 +11,7 @@ export default function CalorieTracker({ activities }: CalorieTrackerProps) {
     () =>
       activities.reduce(
         (total, activity) =>
-          activity.category === 1 ? total + activity.calories : total,
+          activity.category === 1 ? total + +activity.calories : total,
         0
       ),
     [activities]
@@ -21,7 +21,7 @@ export default function CalorieTracker({ activities }: CalorieTrackerProps) {
     () =>
       activities.reduce(
         (total, activity) =>
-          activity.category === 2 ? total + activity.calories : total,
+          activity.category === 2 ? total + +activity.calories : total,
         0
       ),
     [activities]
