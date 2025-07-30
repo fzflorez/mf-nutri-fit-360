@@ -3,6 +3,7 @@ import { activityReducer, initialState } from "./reducers/activity-reducer";
 import ActivityList from "./components/activity-list";
 import CalorieTracker from "./components/calorie-tracker";
 import Form from "./components/Form";
+import { RefreshCcw } from "lucide-react";
 
 function App() {
   const [state, dispatch] = useReducer(activityReducer, initialState);
@@ -18,17 +19,21 @@ function App() {
 
   return (
     <>
-      <header className=" bg-sky-500 px-3 py-5">
-        <div className=" flex justify-between items-center max-w-4xl mx-auto">
-          <h1 className=" text-3xl text-white font-bold md:text-4xl md:font-black">
-            Nutrifit 360
-          </h1>
+      <header className="bg-white shadow-lg p-4 md:p-6 mb-8">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center">
+          <div className="flex items-center space-x-3 mb-4 md:mb-0">
+            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-blue-600 text-white font-bold text-xl shadow-md">
+              NF
+            </div>
+            <h1 className="text-3xl font-extrabold text-gray-800">NutriFit <span className="text-green-600">360</span></h1>
+          </div>
           <button
-            className=" text-base text-black bg-white rounded-lg font-semibold py-1 px-3 transition-all duration-200 ease-in-out disabled:opacity-40 md:text-lg"
             disabled={!canRestartApp}
             onClick={() => dispatch({ type: "restart-app" })}
+            className={`bg-red-500 text-white font-bold py-2 px-6 rounded-full shadow-md flex items-center space-x-2 transition duration-300 disabled:opacity-50 ${canRestartApp && 'cursor-pointer hover:bg-red-600'}`}
           >
-            Reiniciar App
+            <RefreshCcw size={18} />
+            <span>Reiniciar App</span>
           </button>
         </div>
       </header>
