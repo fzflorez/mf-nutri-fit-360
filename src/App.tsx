@@ -45,9 +45,7 @@ function App() {
       <main className=" container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
         <Form dispatch={dispatch} state={state} />
 
-        <section className=" w-full bg-gray-800 py-6">
-          <CalorieTracker activities={state.activities} />
-        </section>
+        <CalorieTracker activities={state.activities} />
 
         <section className=" max-w-7xl mx-auto">
           <ActivityList activities={state.activities} dispatch={dispatch} />

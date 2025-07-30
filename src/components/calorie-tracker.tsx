@@ -33,18 +33,18 @@ export default function CalorieTracker({ activities }: CalorieTrackerProps) {
   );
 
   return (
-    <>
-      <h2 className=" text-3xl text-center text-white font-bold md:text-4xl">
-        Resumen
-      </h2>
+    <section className="lg:col-span-2 space-y-8">
+      <div className="bg-gradient-to-r from-blue-600 to-green-600 p-6 md:p-8 rounded-2xl shadow-xl text-white text-center">
+        <h2 className="text-3xl font-bold mb-6">Resumen Diario</h2>
 
-      <div className=" flex flex-col gap-5 md:flex-row md:justify-evenly mt-5">
-        <CaloriesDisplay calories={caloriesConsumed} text="Consumidas" />
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <CaloriesDisplay calories={caloriesConsumed} text="Consumidas" />
 
-        <CaloriesDisplay calories={caloriesBurned} text="Ejercicio" />
+          <CaloriesDisplay calories={caloriesBurned} text="Ejercicio" />
 
-        <CaloriesDisplay calories={caloriesDiference} text="Diferencia" />
+          <CaloriesDisplay calories={caloriesDiference} text="Diferencia" />
+        </div>
       </div>
-    </>
+    </section>
   );
 }
