@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useReducer } from "react";
 import { activityReducer, initialState } from "./reducers/activity-reducer";
-import ActivityList from "./components/activity-list";
 import CalorieTracker from "./components/calorie-tracker";
 import Form from "./components/Form";
 import { RefreshCcw } from "lucide-react";
+import ActivityList from "./components/activity-list";
 
 function App() {
   const [state, dispatch] = useReducer(activityReducer, initialState);
@@ -19,8 +19,8 @@ function App() {
 
   return (
     <>
-      <header className="bg-white shadow-lg p-4 md:p-6 mb-8">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center">
+      <header className="bg-white shadow-lg p-4 md:px-10 md:py-6">
+        <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center space-x-3 mb-4 md:mb-0">
             <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-blue-600 text-white font-bold text-xl shadow-md">
               NF
@@ -42,12 +42,12 @@ function App() {
         </div>
       </header>
 
-      <main className=" container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <main className="container mx-auto grid grid-cols-1 px-5 my-12 lg:grid-cols-3 gap-8 md:px-10">
         <Form dispatch={dispatch} state={state} />
 
-        <CalorieTracker activities={state.activities} />
+        <section className="lg:col-span-2 space-y-8">
+          <CalorieTracker activities={state.activities} />
 
-        <section className=" max-w-7xl mx-auto">
           <ActivityList activities={state.activities} dispatch={dispatch} />
         </section>
       </main>

@@ -1,8 +1,6 @@
-import { useMemo } from "react";
 import { Activity } from "../types";
-import { categories } from "../data/categories";
-import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { ActivityActions } from "../reducers/activity-reducer";
+import { Dumbbell, PencilIcon, Trash2Icon, Utensils } from "lucide-react";
 
 type ActivityListProps = {
   activities: Activity[];
@@ -13,46 +11,58 @@ export default function ActivityList({
   activities,
   dispatch,
 }: ActivityListProps) {
-  const categoryName = useMemo(
-    () => (category: Activity["category"]) =>
-      categories.map((cat) => (cat.id === category ? cat.name : "")),
-    [activities]
-  );
-
   return (
-    <>
-      <h2 className=" text-3xl text-gray-700 font-bold text-center mb-5 md:text-4xl">
+    <div className="bg-white p-6 md:p-8 rounded-xl shadow-xl border border-green-100">
+      <h2 className="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-green-300 pb-2">
         Comida y Actividades
       </h2>
 
       {activities.length === 0 ? (
-        <p className=" text-gray-600 text-lg font-semibold text-center my-5">
-          Aún no hay actividades...
+        <p className="text-gray-500 text-center py-8">
+          Aún no hay actividades registradas. ¡Empieza a agregar!
         </p>
       ) : (
-        <div className=" grid grid-cols-1 gap-4 max-w-3xl mx-auto md:gap-6">
+        <div className="space-y-4">
           {activities.map((activity) => (
             <div
               key={activity.id}
-              className=" bg-white flex justify-between px-5 py-6 rounded-lg shadow-lg"
+              className={`flex items-center justify-between p-4 rounded-xl shadow-md transition duration-200 ease-in-out transform ${
+                activity.category === 1
+                  ? "bg-yellow-50 border-l-4 border-yellow-400"
+                  : "bg-blue-50 border-l-4 border-blue-400"
+              }`}
             >
-              <div className=" relative">
-                <p
-                  className={`absolute -top-4 -left-8 px-4 py-1 text-white font-bold uppercase text- ${
-                    activity.category === 1 ? " bg-lime-500" : "bg-orange-500"
+              <div className="flex items-center space-x-4">
+                <div
+                  className={`p-3 rounded-full ${
+                    activity.category === 1
+                      ? "bg-yellow-200 text-yellow-800"
+                      : "bg-blue-200 text-blue-800"
                   }`}
                 >
-                  {categoryName(+activity.category)}
-                </p>
-                <p className=" text-xl font-bold text-gray-700 pt-5 md:text-2xl">
-                  {activity.name}
-                </p>
-                <p className=" text-2xl font-black text-lime-500 md:text-3xl">
-                  {activity.calories} Calorias
-                </p>
+                  {activity.category === 1 ? (
+                    <Utensils size={20} />
+                  ) : (
+                    <Dumbbell size={20} />
+                  )}
+                </div>
+                <div>
+                  <p className="text-lg font-semibold text-gray-800">
+                    {activity.name}
+                  </p>
+                  <p
+                    className={`font-black text-2xl ${
+                      activity.category === 1
+                        ? "text-yellow-400"
+                        : "text-blue-400"
+                    }`}
+                  >
+                    {activity.calories} Calorías
+                  </p>
+                </div>
               </div>
 
-              <div className=" flex gap-2">
+              <div className=" flex gap-1">
                 <button
                   onClick={() =>
                     dispatch({
@@ -60,8 +70,9 @@ export default function ActivityList({
                       payload: { id: activity.id },
                     })
                   }
+                  className="hover:bg-gray-200 rounded p-1 transition-all duration-300"
                 >
-                  <PencilSquareIcon className=" w-7 h-7 text-gray-500" />
+                  <PencilIcon size={20} className="text-green-500" />
                 </button>
 
                 <button
@@ -71,14 +82,15 @@ export default function ActivityList({
                       payload: { id: activity.id },
                     })
                   }
+                  className="hover:bg-gray-200 rounded p-1 transition-all duration-300"
                 >
-                  <TrashIcon className=" w-7 h-7 text-red-500 " />
+                  <Trash2Icon size={20} className=" text-red-500 " />
                 </button>
               </div>
             </div>
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 }

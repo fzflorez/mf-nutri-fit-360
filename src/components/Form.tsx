@@ -44,7 +44,7 @@ export default function Form({ dispatch, state }: FormProps) {
 
   function isValidActivity() {
     const { name, calories } = activity;
-    return name.trim() !== "" && calories !== "";
+    return name.trim() !== "" && calories > "";
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -57,7 +57,7 @@ export default function Form({ dispatch, state }: FormProps) {
 
   return (
     <form
-      className="lg:col-span-1 bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-blue-100 h-fit"
+      className="lg:col-span-1 bg-white p-6 md:p-8 rounded-xl shadow-xl border border-blue-100 h-fit"
       onSubmit={handleSubmit}
     >
       <h2 className="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-blue-300 text-center pb-2">
@@ -75,7 +75,7 @@ export default function Form({ dispatch, state }: FormProps) {
             <select
               id="category"
               value={activity.category}
-              className="block w-full px-4 py-3 border border-gray-300 rounded-lg bg-white appearance-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-200 pr-10"
+              className="block w-full px-4 py-3 border border-gray-300 rounded-lg outline-none bg-white appearance-none pr-10"
               onChange={handleChange}
             >
               {categories.map((category) => (
@@ -101,7 +101,7 @@ export default function Form({ dispatch, state }: FormProps) {
             type="text"
             id="name"
             value={activity.name}
-            className=" border border-gray-300 py-1 px-2 rounded-lg outline-none md:p-2"
+            className="w-full px-4 py-3 border border-gray-300 outline-none rounded-lg"
             placeholder={
               activity.category === 1
                 ? "Ej. Manzana, Pollo"
@@ -121,9 +121,9 @@ export default function Form({ dispatch, state }: FormProps) {
           <input
             type="number"
             id="calories"
-            value={Number(activity.calories) === 0 ? "" : activity.calories}
+            value={Number(activity.calories) == 0 ? "" : activity.calories}
             placeholder="Ej. 150, 300"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-200"
+            className="w-full px-4 py-3 border border-gray-300 outline-none rounded-lg"
             onChange={handleChange}
           />
         </div>
