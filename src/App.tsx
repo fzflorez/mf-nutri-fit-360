@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useReducer } from "react";
 import { activityReducer, initialState } from "./reducers/activity-reducer";
 import CalorieTracker from "./components/calorie-tracker";
-import Form from "./components/Form";
 import { RefreshCcw } from "lucide-react";
 import ActivityList from "./components/activity-list";
+import Form from "./components/form";
 
 function App() {
   const [state, dispatch] = useReducer(activityReducer, initialState);
@@ -20,11 +20,8 @@ function App() {
   return (
     <>
       <header className="bg-white shadow-lg p-4 md:px-10 md:py-6">
-        <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center space-x-3 mb-4 md:mb-0">
-            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-blue-600 text-white font-bold text-xl shadow-md">
-              NF
-            </div>
             <h1 className="text-3xl font-extrabold text-gray-800">
               NutriFit <span className="text-green-600">360</span>
             </h1>
