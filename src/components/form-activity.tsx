@@ -5,12 +5,12 @@ import { Activity } from "../types";
 import { ActivityActions, ActivityState } from "../reducers/activity-reducer";
 import { ChevronDown, PlusCircle } from "lucide-react";
 
-type FormProps = {
+type FormActivityProps = {
   dispatch: React.ActionDispatch<[action: ActivityActions]>;
   state: ActivityState;
 };
 
-export default function Form({ dispatch, state }: FormProps) {
+export default function FormActivity({ dispatch, state }: FormActivityProps) {
   const initialState: Activity = {
     id: uuidv4(),
     category: 1,

@@ -3,7 +3,7 @@ import { activityReducer, initialState } from "./reducers/activity-reducer";
 import CalorieTracker from "./components/calorie-tracker";
 import { RefreshCcw } from "lucide-react";
 import ActivityList from "./components/activity-list";
-import Form from "./components/form";
+import FormActivity from "./components/form-activity";
 
 function App() {
   const [state, dispatch] = useReducer(activityReducer, initialState);
@@ -40,7 +40,7 @@ function App() {
       </header>
 
       <main className="container mx-auto grid grid-cols-1 px-5 my-12 lg:grid-cols-3 gap-8 md:px-10">
-        <Form dispatch={dispatch} state={state} />
+        <FormActivity dispatch={dispatch} state={state} />
 
         <section className="lg:col-span-2 space-y-8">
           <CalorieTracker activities={state.activities} />
